@@ -1,6 +1,6 @@
 const tweet = require("../models/tweet");
 
-class tweetRepository {
+class TweetRepository {
     async create(data) {
         try {
             const tweetData = await tweet.create(data);
@@ -53,4 +53,4 @@ class tweetRepository {
     }
 }
 
-module.exports = new tweetRepository();
+module.exports = new TweetRepository();
