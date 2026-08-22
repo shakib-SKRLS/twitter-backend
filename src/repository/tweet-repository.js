@@ -1,14 +1,12 @@
 const tweet = require("../models/tweet");
+const CrudRepository = require("./crud-repository");
 
-class TweetRepository {
-    async create(data) {
-        try {
-            const tweetData = await tweet.create(data);
-            return tweetData;
-        } catch (error) {
-            throw error;
-        }
+class TweetRepository extends CrudRepository {
+    constructor() {
+        super(tweet);
     }
+
+  
 
     async getAll(offset, limit) {
         try {
@@ -35,22 +33,7 @@ class TweetRepository {
             throw error;
         }
     }
-    async update(id, data) {
-        try {
-            const tweetData = await tweet.findByIdAndUpdate(id, data, { new: true });
-            return tweetData;
-        } catch (error) {
-            throw error;
-        }   
-    }
-    async delete(id) {
-        try {
-            const tweetData = await tweet.findByIdAndDelete(id);
-            return tweetData;
-        } catch (error) {
-            throw error;
-        }
-    }
+    
 }
 
 module.exports = new TweetRepository();
