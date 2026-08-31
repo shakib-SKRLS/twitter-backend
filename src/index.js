@@ -31,7 +31,7 @@ app.listen(port, async () => {
   if (!user) {
     user = await userRepo.create({
       name: "Shakib Khan",
-      email: "d@gmail.com",
+      email: "e@gmail.com",
       password: "123456"
     });
     console.log("User created:", user);
@@ -40,6 +40,6 @@ app.listen(port, async () => {
   }
 
   const likeService = new LikeService();
-  const isAdded = await likeService.toggleLike(tweets[0]._id, "Tweet", user._id);
+  const isAdded = await likeService.toggleLike(tweets[1]._id, "Tweet", user._id);
   console.log("Like toggled, isAdded:", isAdded);
 });
