@@ -16,8 +16,8 @@ app.listen(port, async () => {
   await connectDB();
   console.log("Database connected");
 
-  const tweetRepo = TweetRepository;
-  const userRepo = UserRepository;
+  const tweetRepo =  TweetRepository;
+  const userRepo =  UserRepository;
 
   const tweets = await tweetRepo.getAll(0, 5);
   console.log("Tweets fetched:", tweets);

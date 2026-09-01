@@ -1,4 +1,4 @@
-const LikeService = require('../services/like_service.js');
+const LikeService = require('../services/like-service.js');
 
 const likeService = new LikeService();
 
