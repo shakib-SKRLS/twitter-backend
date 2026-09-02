@@ -18,6 +18,14 @@ class UserService {
             throw error;
         }
     }
+    async getUserByEmail(email) {
+        try {
+            const user = await this.userRepository.findByEmail(email);
+            return user;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = new UserService();
