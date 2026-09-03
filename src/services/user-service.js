@@ -21,7 +21,25 @@ class UserService {
     async getUserByEmail(email) {
         try {
             const user = await this.userRepository.findByEmail(email);
+           
             return user;
+        } catch (error) {
+            throw error;
+        }
+    }
+    async signIn(userData) {
+        try {
+        const user = await this.getUserByEmail(userData.email);
+        console.log(userData);
+        if (!user) {
+            throw new Error('User not found');
+        }
+        if(!user.comparePassword(userData.password)) {
+            throw new Error('Invalid password');
+        }
+        const token = user.genJWT();
+        // Here you would typically verify the password
+        return { user, token };
         } catch (error) {
             throw error;
         }

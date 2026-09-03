@@ -14,14 +14,8 @@ const signUp = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = await userService.getUserByEmail({ email });
-        if (!user) {
-            return res.status(401).json({ message: 'Invalid email or password' });
-        }
-        if(!user.comparePassword(password)){
-            return res.status(401).json({ message: 'Invalid email or password' });
-        }
-        res.json({ message: 'Login successful', token: user.genJWT() });
+        const { user, token } = await userService.signIn({ email, password });
+        res.json({ message: 'Login successful', token });
     } catch (error) {
         res.status(401).json({ message: error.message });
     }
