@@ -30,15 +30,13 @@ class UserService {
     async signIn(userData) {
         try {
         const user = await this.getUserByEmail(userData.email);
-        console.log(userData);
         if (!user) {
             throw new Error('User not found');
         }
-        if(!user.comparePassword(userData.password)) {
+        if(!(await user.comparePassword(userData.password))) {
             throw new Error('Invalid password');
         }
         const token = user.genJWT();
-        // Here you would typically verify the password
         return { user, token };
         } catch (error) {
             throw error;
