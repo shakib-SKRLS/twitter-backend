@@ -3,9 +3,14 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const passport = require('passport');
 const User = require('../models/user');
 
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+    throw new Error('JWT_SECRET is not set. Add it to your .env file (see .env.example).');
+}
+
 const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: process.env.JWT_SECRET || 'your_jwt_secret_key'
+    secretOrKey: JWT_SECRET
 };
 
 const passportAuth= (passport) => {
