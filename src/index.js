@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/database");
 const passport = require("passport");
@@ -6,7 +7,7 @@ const passportAuth = require("./config/jwt-middleware");
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const routes = require("./routes/index");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
