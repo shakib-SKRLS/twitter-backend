@@ -18,7 +18,7 @@ Base path: `/api/v1` (mounted at `/api` in `src/index.js`).
 | POST | `/api/v1/login` | No | Log in and get a JWT |
 | POST | `/api/v1/tweets` | Yes | Create a tweet |
 | POST | `/api/v1/comments` | Yes | Create a comment |
-| POST | `/api/v1/likes/toggle` | No | Toggle a like |
+| POST | `/api/v1/likes/toggle` | Yes | Toggle a like |
 
 ## How to run
 ```bash
