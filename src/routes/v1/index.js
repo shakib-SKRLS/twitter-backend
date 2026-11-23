@@ -10,7 +10,7 @@ const  authenticate  = require('../../middleware/authenticate');
 router.post('/signup', signUp);
 router.post('/login', login);
 
-router.post('/likes/toggle', toggleLike);
+router.post('/likes/toggle', authenticate, toggleLike);
 router.post('/tweets', authenticate, createTweet);
 router.post('/comments', authenticate, createComment);
 
