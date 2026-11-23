@@ -17,7 +17,7 @@ const commentSchema = new mongoose.Schema({
   },
   commentable: {
     type: mongoose.Schema.Types.ObjectId,
-    require: true,
+    required: true,
     refPath: 'onModel'
   },
   comments: [
