@@ -5,7 +5,9 @@ const signUp = async (req, res) => {
     const {name, email, password } = req.body;
     try {
         const newUser = await userService.signUp({ name, email, password });
-        res.status(201).json({ message: 'User created successfully', user: newUser });
+        const userObj = newUser.toObject();
+        delete userObj.password;
+        res.status(201).json({ message: 'User created successfully', user: userObj });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
